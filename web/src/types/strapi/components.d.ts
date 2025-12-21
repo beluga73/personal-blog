@@ -1,4 +1,4 @@
-import type { Schema, Struct } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/types';
 
 export interface SharedMetaTag extends Struct.ComponentSchema {
   collectionName: 'components_shared_meta_tags';
@@ -15,8 +15,8 @@ export interface SharedMetaTag extends Struct.ComponentSchema {
   };
 }
 
-declare module '@strapi/strapi' {
-  export module Public {
+declare module '@strapi/types' {
+  export namespace Public {
     export interface ComponentSchemas {
       'shared.meta-tag': SharedMetaTag;
     }

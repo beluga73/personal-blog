@@ -1,4 +1,4 @@
-import type { Schema, Struct } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/types';
 
 export interface AdminApiToken extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_api_tokens';
@@ -133,7 +133,8 @@ export interface AdminPermission extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
-    actionParameters: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<{}>;
+    actionParameters: Schema.Attribute.JSON &
+      Schema.Attribute.DefaultTo<object>;
     conditions: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<[]>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -141,7 +142,7 @@ export interface AdminPermission extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'admin::permission'> &
       Schema.Attribute.Private;
-    properties: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<{}>;
+    properties: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<object>;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.Relation<'manyToOne', 'admin::role'>;
     subject: Schema.Attribute.String &
@@ -989,8 +990,8 @@ export interface PluginUsersPermissionsUser
   };
 }
 
-declare module '@strapi/strapi' {
-  export module Public {
+declare module '@strapi/types' {
+  export namespace Public {
     export interface ContentTypeSchemas {
       'admin::api-token': AdminApiToken;
       'admin::api-token-permission': AdminApiTokenPermission;

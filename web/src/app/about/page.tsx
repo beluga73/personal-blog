@@ -42,7 +42,7 @@ export default async function About() {
             {status_label}
           </Badge>
           <h1 className="my-6 text-5xl font-bold tracking-tight">
-            Hi, I'm {full_name}
+            Hi, I&apos;m {full_name}
           </h1>
           <BlocksRenderer content={bio} />
         </div>
