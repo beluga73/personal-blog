@@ -5,7 +5,8 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { Container } from '@/components/container';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { api, getStrapiMedia } from '@/lib/api';
+import { api } from '@/lib/api';
+import { getStrapiMedia } from '@/lib/strapi-utils';
 
 export default async function About() {
   const {

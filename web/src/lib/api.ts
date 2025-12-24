@@ -1,5 +1,5 @@
 import { AboutData } from '@/types/about';
-import { StrapiMedia, StrapiResponse } from '@/types/strapi-utils';
+import type { StrapiResponse } from '@/types/strapi-utils';
 
 /**
  * Generic API client class for making HTTP requests
@@ -87,24 +87,6 @@ class ApiClient {
 const apiClient = new ApiClient(
   process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 );
-
-/**
- * Helper to get the full Strapi URL for media/assets
- */
-export function getStrapiMedia(
-  media: StrapiMedia,
-  preferredFormat?: 'large' | 'medium' | 'small' | 'thumbnail'
-) {
-  const formats = media.formats;
-  const url =
-    preferredFormat && formats?.[preferredFormat]?.url
-      ? formats[preferredFormat].url
-      : media.url;
-
-  // if (!url) return null;
-  // if (url.startsWith('http') || url.startsWith('//')) return url;
-  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
-}
 
 export const api = {
   getAbout: () =>
