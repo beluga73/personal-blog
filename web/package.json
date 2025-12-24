@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "test": "vitest",
     "sync:strapi:types": "mkdir -p src/types/strapi && cp ../cms/types/generated/*.d.ts src/types/strapi/ && sed -i '' 's/@strapi\\/strapi/@strapi\\/types/g' src/types/strapi/*.d.ts",
     "sync:strapi:types:install": "pnpm -C ../cms run generate:types && pnpm run sync:strapi:types"
   },
@@ -36,14 +37,19 @@
   "devDependencies": {
     "@strapi/types": "^5.33.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
     "@trivago/prettier-plugin-sort-imports": "^6.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.0",
+    "jsdom": "^27.3.0",
     "prettier": "^3.7.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.0.16"
   }
 }
