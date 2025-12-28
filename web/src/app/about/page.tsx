@@ -22,7 +22,6 @@ export default async function About() {
   } = await api.getAbout();
 
   const imageUrl = getStrapiMedia(profile_image, 'large');
-  console.log(tools);
 
   return (
     <Container className="flex flex-col gap-12 items-start p-8 lg:flex-row md:items-stretch">
@@ -54,7 +53,7 @@ export default async function About() {
               <Badge
                 variant="secondary"
                 key={tool.id}
-                className="px-3 py-3 text-md"
+                className="px-4 py-3.5 text-sm"
               >
                 {tool.label}
               </Badge>
