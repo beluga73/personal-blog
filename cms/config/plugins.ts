@@ -7,7 +7,7 @@ export default ({ env }) => ({
       },
       settings: {
         defaultFrom: env("RESEND_EMAIL"),
-        // defaultReplyTo: "me@example.com",
+        defaultReplyTo: env("RESEND_EMAIL"),
       },
     },
   },
