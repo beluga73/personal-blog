@@ -10,6 +10,8 @@ export type InferAttribute<T> = T extends
   | Schema.Attribute.Email
   | Schema.Attribute.Enumeration<string[]>
   | Schema.Attribute.UID<string>
+  | Schema.Attribute.Password
+  | Schema.Attribute.RichText
   ? string
   : T extends
         | Schema.Attribute.Integer
