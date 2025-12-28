@@ -1,10 +1,10 @@
+import { useAuthStore } from '@/features/auth/store';
 import { AboutData } from '@/types/about';
 import {
   LoginInput,
   RegisterInput,
   StrapiLoginResponse,
   StrapiRegisterResponse,
-  StrapiUser,
 } from '@/types/auth';
 import type { StrapiResponse } from '@/types/strapi-utils';
 
@@ -16,6 +16,19 @@ class ApiClient {
 
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
+  }
+
+  private getHeaders(customHeaders?: Record<string, string>) {
+    const jwt = useAuthStore.getState().jwt;
+    const headers: Record<string, string> = {
+      ...customHeaders,
+    };
+
+    if (jwt && !headers['Authorization']) {
+      headers['Authorization'] = `Bearer ${jwt}`;
+    }
+
+    return headers;
   }
 
   /**
@@ -36,9 +49,7 @@ class ApiClient {
     try {
       const response = await fetch(url.toString(), {
         method: 'GET',
-        headers: {
-          ...headers,
-        },
+        headers: this.getHeaders(headers),
       });
 
       if (!response.ok) {
@@ -79,7 +90,7 @@ class ApiClient {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...headers,
+          ...this.getHeaders(headers),
         },
         body: data ? JSON.stringify(data) : undefined,
       });
