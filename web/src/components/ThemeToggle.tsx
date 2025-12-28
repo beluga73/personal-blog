@@ -35,7 +35,7 @@ export function ThemeToggle() {
       size="icon-lg"
       data-size="icon"
     >
-      {isDark ? <Sun size={16} /> : <Moon size={16} />}
+      {isDark ? <Moon size={16} /> : <Sun size={16} />}
     </Button>
   );
 }
