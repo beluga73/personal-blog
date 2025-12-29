@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-import { Container } from '@/components/container';
+import { Container } from '@/components/Container';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { api } from '@/lib/api';

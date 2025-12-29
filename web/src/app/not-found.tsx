@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Home } from 'lucide-react';
 
-import { Container } from '@/components/container';
+import { Container } from '@/components/Container';
 import { Button } from '@/components/ui/button';
 
 export default function Custom404() {
