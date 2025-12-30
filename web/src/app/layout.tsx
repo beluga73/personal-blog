@@ -1,19 +1,12 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Roboto } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeProvider } from '@/ThemeProvider';
 
 import './globals.css';
 
-const roboto = Roboto({ subsets: ['latin'], variable: '--font-sans' });
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const inter = Inter({
+  variable: '--font-sans',
   subsets: ['latin'],
 });
 
@@ -28,10 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.variable} suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+      <body className={`antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

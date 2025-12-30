@@ -1,4 +1,5 @@
 import { AboutData } from '@/types/about';
+import { LoginInput, RegisterInput, StrapiAuthResponse } from '@/types/auth';
 import type { StrapiResponse } from '@/types/strapi-utils';
 
 /**
@@ -11,12 +12,19 @@ class ApiClient {
     this.baseUrl = baseUrl;
   }
 
+  private getHeaders(customHeaders?: Record<string, string>) {
+    return {
+      ...customHeaders,
+    };
+  }
+
   /**
    * Generic GET request method
    */
   async get<T = unknown>(
     endpoint: string,
-    params?: Record<string, string>
+    params?: Record<string, string>,
+    headers?: Record<string, string>
   ): Promise<T> {
     const url = new URL(endpoint, this.baseUrl);
     if (params) {
@@ -26,11 +34,19 @@ class ApiClient {
     }
 
     try {
-      const response = await fetch(url.toString());
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: this.getHeaders(headers),
+        credentials: 'include',
+      });
 
       if (!response.ok) {
+        const errorData = (await response.json().catch(() => null)) as {
+          error?: { message?: string };
+        } | null;
         throw new Error(
-          `HTTP Error: ${response.status} ${response.statusText}`
+          errorData?.error?.message ||
+            `HTTP Error: ${response.status} ${response.statusText}`
         );
       }
 
@@ -50,7 +66,11 @@ class ApiClient {
   /**
    * Generic POST request method
    */
-  async post<T = unknown>(endpoint: string, data?: unknown): Promise<T> {
+  async post<T = unknown>(
+    endpoint: string,
+    data?: unknown,
+    headers?: Record<string, string>
+  ): Promise<T> {
     const url = `${this.baseUrl}${endpoint}`;
 
     try {
@@ -58,13 +78,19 @@ class ApiClient {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...this.getHeaders(headers),
         },
         body: data ? JSON.stringify(data) : undefined,
+        credentials: 'include',
       });
 
       if (!response.ok) {
+        const errorData = (await response.json().catch(() => null)) as {
+          error?: { message?: string };
+        } | null;
         throw new Error(
-          `HTTP Error: ${response.status} ${response.statusText}`
+          errorData?.error?.message ||
+            `HTTP Error: ${response.status} ${response.statusText}`
         );
       }
 
@@ -91,6 +117,11 @@ const apiClient = new ApiClient(
 export const api = {
   getAbout: () =>
     apiClient.get<StrapiResponse<AboutData>>('/api/about', { populate: '*' }),
+  register: (data: RegisterInput) =>
+    apiClient.post<StrapiAuthResponse>('/api/auth/local/register', data),
+  login: (data: LoginInput) =>
+    apiClient.post<StrapiAuthResponse>('/api/auth/local', data),
+  logout: () => apiClient.post<{ ok: boolean }>('/api/auth/logout'),
 };
 
 export { apiClient };
