@@ -30,7 +30,6 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from '@/components/ui/input-group';
-import { useAuthStore } from '@/features/auth/store';
 import { api } from '@/lib/api';
 
 const loginSchema = z.object({
@@ -42,7 +41,6 @@ type LoginValues = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
-  const setAuth = useAuthStore((state) => state.setAuth);
   const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -66,7 +64,6 @@ export default function LoginPage() {
         password: data.password,
       });
 
-      setAuth(_data.user, _data.jwt);
       router.push('/');
     } catch (err) {
       setError('Invalid email or password. Please try again.');

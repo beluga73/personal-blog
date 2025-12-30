@@ -2,12 +2,9 @@ import { InferData } from './strapi-utils';
 
 export type StrapiUser = InferData<'plugin::users-permissions.user'>;
 
-export type StrapiLoginResponse = {
-  jwt: string;
+export interface StrapiAuthResponse {
   user: StrapiUser;
-};
-
-export type StrapiRegisterResponse = Pick<StrapiLoginResponse, 'user'>;
+}
 
 export interface RegisterInput {
   username: string;
