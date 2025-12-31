@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_post_block_images",
+  "info": {
+    "displayName": "BlockImage"
+  },
+  "options": {},
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "caption": {
+      "type": "string",
+      "required": false
+    },
+    "layout": {
+      "type": "enumeration",
+      "required": true,
+      "default": "full-width",
+      "enum": [
+        "full-width",
+        "constrained",
+        "sidebar"
+      ]
+    }
+  },
+  "config": {}
+}

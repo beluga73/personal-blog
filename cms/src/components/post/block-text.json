@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_post_block_texts",
+  "info": {
+    "displayName": "BlockText"
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}

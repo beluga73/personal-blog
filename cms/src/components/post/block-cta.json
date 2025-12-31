@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_post_block_ctas",
+  "info": {
+    "displayName": "BlockCTA"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "enumeration",
+      "required": true,
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    }
+  },
+  "config": {}
+}

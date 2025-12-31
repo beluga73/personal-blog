@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_post_block_codes",
+  "info": {
+    "displayName": "BlockCode"
+  },
+  "options": {},
+  "attributes": {
+    "code": {
+      "type": "text",
+      "required": true
+    },
+    "language": {
+      "type": "enumeration",
+      "required": true,
+      "default": "typescript",
+      "enum": [
+        "javascript",
+        "typescript",
+        "python",
+        "java",
+        "c",
+        "cpp",
+        "csharp",
+        "go",
+        "rust",
+        "php",
+        "ruby",
+        "swift",
+        "kotlin",
+        "dart",
+        "scala",
+        "bash",
+        "sql",
+        "html",
+        "css",
+        "json"
+      ]
+    }
+  },
+  "config": {}
+}

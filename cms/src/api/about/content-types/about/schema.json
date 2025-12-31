@@ -27,10 +27,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
     "bio": {
       "type": "blocks",
@@ -55,6 +52,11 @@
       "default": "Get in touch",
       "minLength": 3,
       "maxLength": 20,
+      "required": true
+    },
+    "nav_label": {
+      "type": "string",
+      "private": true,
       "required": true
     }
   }

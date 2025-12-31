@@ -12,6 +12,22 @@ export default ({ env }) => ({
       deleteJwtFromResponse: true,
     },
   },
+  navigation: {
+    enabled: true,
+    config: {
+      contentTypes: ['api::home.home', 'api::about.about', 'api::category.category'],
+      contentTypesNameFields: {
+        'api::about.about': ['nav_label'],
+        'api::home.home': ['nav_label'],
+        'api::category.category': ['name'],
+      },
+      pathDefaultFields: {
+        'api::about.about': ['nav_label'],
+        'api::category.category': ['uid'],
+      },
+      allowedLevels: 2,
+    },
+  },
   email: {
     config: {
       provider: 'strapi-provider-email-resend',

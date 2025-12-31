@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_post_block_quotes",
+  "info": {
+    "displayName": "BlockQuote"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "text",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "config": {}
+}
