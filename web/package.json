@@ -37,7 +37,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@next/eslint-plugin-next": "^15.5.9",
-    "@strapi/types": "^5.33.0",
+    "@strapi/types": "^5.33.1",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",

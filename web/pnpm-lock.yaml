@@ -76,8 +76,8 @@ importers:
         specifier: ^15.5.9
         version: 15.5.9
       '@strapi/types':
-        specifier: ^5.33.0
-        version: 5.33.0(@types/node@20.19.27)(typescript@5.9.3)
+        specifier: ^5.33.1
+        version: 5.33.1(@types/node@20.19.27)(typescript@5.9.3)
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.18
@@ -1793,24 +1793,24 @@ packages:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
-  '@strapi/database@5.33.0':
-    resolution: {integrity: sha512-F//Hp2eXlvHrF6dVvyU3K8acCf1w5twvDTxRQtiFh2naDtwtD+ECCJnEFPi5PR+nW+YBvGq66JY+PvQrtCc83A==}
+  '@strapi/database@5.33.1':
+    resolution: {integrity: sha512-Qx/x2e9kUMvuf/bG+VuzxKLGDyZLFxDYJgs11mV3deYjz5Pio06kqWKsjITts1ylklR8CPgaB/mW2GbvipQY6A==}
     engines: {node: '>=20.0.0 <=24.x.x', npm: '>=6.0.0'}
 
-  '@strapi/logger@5.33.0':
-    resolution: {integrity: sha512-NIac3Z8D/+O/k5o1TiBkvZkLH/GeCZN0jw3tRKliVHHYVzKbFNbSv+AyVS8RECt3rOsM28R+zwCYbEQNc298dA==}
+  '@strapi/logger@5.33.1':
+    resolution: {integrity: sha512-dl9Y3t0MHKMpL2UakDpQrKB9G8O/20L6Z8VFU11Z2iUN1EZux9KhVU4sL5XZBYZv912gk+s2tuQWrsccqFgv3w==}
     engines: {node: '>=20.0.0 <=24.x.x', npm: '>=6.0.0'}
 
-  '@strapi/permissions@5.33.0':
-    resolution: {integrity: sha512-gJN/OoreFedzYIWi5TDTH0dP+cc5VmhKQgye/nYawb2uYyBBQwSSEdMEKhebg35PtNce1Cxm9eg82KCzMhns5A==}
+  '@strapi/permissions@5.33.1':
+    resolution: {integrity: sha512-B6mpPyZdDVUsVVh46D/xDqj+ttLghJ4HfTyDcV6KWJAJCXgb5cbB6tZ+sMS0qlY4nytJm5xXkE7EOix6G26+pg==}
     engines: {node: '>=20.0.0 <=24.x.x', npm: '>=6.0.0'}
 
-  '@strapi/types@5.33.0':
-    resolution: {integrity: sha512-NaL2hd9vcXUZpGbkfVG9Upkfapiob7e4A2CiRekbqZRZnTSxm7MGUo3Qch4IswxrmNzIVXUkbHATDxg2/cWL4A==}
+  '@strapi/types@5.33.1':
+    resolution: {integrity: sha512-56a9dMg2qiyxuIN08LHGLSKvIMpBpqaYI7KbtzvckhJ3GVOrqoj4zuII3tnJKUFnfJk6tltZUdx+7l5DB/KfVg==}
     engines: {node: '>=20.0.0 <=24.x.x', npm: '>=6.0.0'}
 
-  '@strapi/utils@5.33.0':
-    resolution: {integrity: sha512-11FvtuqiqcFeJSiPUjAYoOZkZ8iomPJgvH7MLuJEqGK8h7HJQptsMYre0hsqcJ1RzRZaKa7kV7YsO/5BegveYg==}
+  '@strapi/utils@5.33.1':
+    resolution: {integrity: sha512-17TlGwzoYWZDA9a4C7WKgjQ0Mf1AM+FfXY/f8OY3rfeL4IB3hqs+C0MKvBJ6d2TClDCAmwQSDEgSi6XsQ3jAgw==}
     engines: {node: '>=20.0.0 <=24.x.x', npm: '>=6.0.0'}
 
   '@swc/helpers@0.5.15':
@@ -6886,10 +6886,10 @@ snapshots:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  '@strapi/database@5.33.0(@types/node@20.19.27)':
+  '@strapi/database@5.33.1(@types/node@20.19.27)':
     dependencies:
       '@paralleldrive/cuid2': 2.2.2
-      '@strapi/utils': 5.33.0
+      '@strapi/utils': 5.33.1
       ajv: 8.16.0
       date-fns: 2.30.0
       debug: 4.3.4
@@ -6909,28 +6909,28 @@ snapshots:
       - supports-color
       - tedious
 
-  '@strapi/logger@5.33.0':
+  '@strapi/logger@5.33.1':
     dependencies:
       lodash: 4.17.21
       winston: 3.10.0
 
-  '@strapi/permissions@5.33.0':
+  '@strapi/permissions@5.33.1':
     dependencies:
       '@casl/ability': 6.5.0
-      '@strapi/utils': 5.33.0
+      '@strapi/utils': 5.33.1
       lodash: 4.17.21
       qs: 6.11.1
       sift: 16.0.1
 
-  '@strapi/types@5.33.0(@types/node@20.19.27)(typescript@5.9.3)':
+  '@strapi/types@5.33.1(@types/node@20.19.27)(typescript@5.9.3)':
     dependencies:
       '@casl/ability': 6.5.0
       '@koa/cors': 5.0.0
       '@koa/router': 12.0.2
-      '@strapi/database': 5.33.0(@types/node@20.19.27)
-      '@strapi/logger': 5.33.0
-      '@strapi/permissions': 5.33.0
-      '@strapi/utils': 5.33.0
+      '@strapi/database': 5.33.1(@types/node@20.19.27)
+      '@strapi/logger': 5.33.1
+      '@strapi/permissions': 5.33.1
+      '@strapi/utils': 5.33.1
       commander: 8.3.0
       json-logic-js: 2.0.5
       koa: 2.16.1
@@ -6952,7 +6952,7 @@ snapshots:
       - tedious
       - typescript
 
-  '@strapi/utils@5.33.0':
+  '@strapi/utils@5.33.1':
     dependencies:
       '@sindresorhus/slugify': 1.1.0
       date-fns: 2.30.0
@@ -9016,7 +9016,7 @@ snapshots:
       '@types/koa': 2.15.0
       co-body: 6.2.0
       formidable: 2.1.5
-      zod: 3.25.67
+      zod: 3.25.76
 
   koa-compose@4.1.0: {}
 
