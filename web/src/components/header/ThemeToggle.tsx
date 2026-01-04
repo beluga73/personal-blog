@@ -18,7 +18,7 @@ export function ThemeToggle() {
   if (!mounted) {
     // Prevent hydration mismatch — render a visually hidden button placeholder
     return (
-      <Button aria-hidden data-variant="ghost" data-size="icon">
+      <Button aria-hidden variant="ghost" size="icon">
         <Sun size={16} />
       </Button>
     );
@@ -31,9 +31,8 @@ export function ThemeToggle() {
     <Button
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      data-variant="ghost"
-      size="icon-lg"
-      data-size="icon"
+      variant="ghost"
+      size="icon"
     >
       {isDark ? <Moon size={16} /> : <Sun size={16} />}
     </Button>
