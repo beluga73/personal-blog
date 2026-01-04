@@ -1,6 +1,12 @@
 import { AboutData } from '@/types/about';
-import { LoginInput, RegisterInput, StrapiAuthResponse } from '@/types/auth';
+import {
+  LoginInput,
+  RegisterInput,
+  StrapiAuthResponse,
+  StrapiUser,
+} from '@/types/auth';
 import type { StrapiResponse } from '@/types/strapi-utils';
+import { StrapiNavigationResponse } from '@/types/strapi-utils';
 
 /**
  * Generic API client class for making HTTP requests
@@ -24,7 +30,8 @@ class ApiClient {
   async get<T = unknown>(
     endpoint: string,
     params?: Record<string, string>,
-    headers?: Record<string, string>
+    headers?: Record<string, string>,
+    fetchOptions?: RequestInit
   ): Promise<T> {
     const url = new URL(endpoint, this.baseUrl);
     if (params) {
@@ -38,6 +45,7 @@ class ApiClient {
         method: 'GET',
         headers: this.getHeaders(headers),
         credentials: 'include',
+        ...fetchOptions,
       });
 
       if (!response.ok) {
@@ -115,13 +123,27 @@ const apiClient = new ApiClient(
 );
 
 export const api = {
-  getAbout: () =>
-    apiClient.get<StrapiResponse<AboutData>>('/api/about', { populate: '*' }),
+  getAbout: (headers?: Record<string, string>) =>
+    apiClient.get<StrapiResponse<AboutData>>(
+      '/api/about',
+      { populate: '*' },
+      headers,
+      { next: { revalidate: false, tags: ['about'] } }
+    ),
+  getNavigation: (headers?: Record<string, string>) =>
+    apiClient.get<StrapiNavigationResponse>(
+      '/api/navigation/render/header',
+      { type: 'RFR' },
+      headers,
+      { next: { revalidate: false, tags: ['header'] } }
+    ),
   register: (data: RegisterInput) =>
     apiClient.post<StrapiAuthResponse>('/api/auth/local/register', data),
   login: (data: LoginInput) =>
     apiClient.post<StrapiAuthResponse>('/api/auth/local', data),
   logout: () => apiClient.post<{ ok: boolean }>('/api/auth/logout'),
+  getCurrentUser: (headers?: Record<string, string>) =>
+    apiClient.get<StrapiUser>('/api/users/me', undefined, headers),
 };
 
 export { apiClient };

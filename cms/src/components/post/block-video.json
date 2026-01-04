@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_post_block_videos",
+  "info": {
+    "displayName": "BlockVideo"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

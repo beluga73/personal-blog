@@ -99,3 +99,30 @@ export interface StrapiResponse<T> {
     };
   };
 }
+
+export interface StrapiNavigationItem {
+  id: string;
+  documentId: string;
+  title: string;
+  path: string;
+  parent?: string;
+  related?: {
+    contentType: string;
+    documentId: string;
+  };
+  menuAttached: boolean;
+  additionalFields: Record<string, unknown>;
+}
+
+export interface StrapiNavigationResponse {
+  pages: Record<string, StrapiNavigationItem>;
+  nav: {
+    root: string[];
+  };
+}
+
+export interface NavItem {
+  title: string;
+  path: string;
+  items?: NavItem[];
+}

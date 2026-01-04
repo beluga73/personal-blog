@@ -33,7 +33,7 @@ import {
 import { api } from '@/lib/api';
 
 const loginSchema = z.object({
-  email: z.email('Please enter a valid email address'),
+  identifier: z.string().min(1, 'Email or username is required'),
   password: z.string().min(1, 'Password is required'),
 });
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
   } = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: '',
+      identifier: '',
       password: '',
     },
   });
@@ -59,13 +59,11 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginValues) => {
     setError(null);
     try {
-      const _data = await api.login({
-        identifier: data.email,
-        password: data.password,
-      });
+      const _data = await api.login(data);
 
       router.push('/');
     } catch (err) {
+      // TODO: change to strapi error
       setError('Invalid email or password. Please try again.');
       console.error('Login error:', err);
     }
@@ -91,12 +89,12 @@ export default function LoginPage() {
               <FieldLabel>Email or Username</FieldLabel>
               <FieldContent>
                 <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  {...register('email')}
-                  aria-invalid={!!errors.email}
+                  type="text"
+                  placeholder="Enter your email or username"
+                  {...register('identifier')}
+                  aria-invalid={!!errors.identifier}
                 />
-                <FieldError errors={[errors.email]} />
+                <FieldError errors={[errors.identifier]} />
               </FieldContent>
             </Field>
 
