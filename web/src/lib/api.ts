@@ -123,8 +123,13 @@ const apiClient = new ApiClient(
 );
 
 export const api = {
-  getAbout: () =>
-    apiClient.get<StrapiResponse<AboutData>>('/api/about', { populate: '*' }),
+  getAbout: (headers?: Record<string, string>) =>
+    apiClient.get<StrapiResponse<AboutData>>(
+      '/api/about',
+      { populate: '*' },
+      headers,
+      { next: { revalidate: false, tags: ['about'] } }
+    ),
   getNavigation: (headers?: Record<string, string>) =>
     apiClient.get<StrapiNavigationResponse>(
       '/api/navigation/render/header',
