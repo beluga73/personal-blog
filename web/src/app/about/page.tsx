@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache';
 import Image from 'next/image';
 
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
@@ -9,6 +10,8 @@ import { api } from '@/lib/api';
 import { getStrapiMedia } from '@/lib/strapi-utils';
 
 export default async function About() {
+  'use cache';
+  cacheLife('max');
   const {
     data: {
       status_label,

@@ -19,7 +19,7 @@ export function ThemeToggle() {
     // Prevent hydration mismatch — render a visually hidden button placeholder
     return (
       <Button aria-hidden variant="ghost" size="icon">
-        <Sun size={16} />
+        <Moon size={16} />
       </Button>
     );
   }
