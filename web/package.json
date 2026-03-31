@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 4000",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "sync:strapi:types": "mkdir -p src/types/strapi && cp ../cms/types/generated/*.d.ts src/types/strapi/ && sed -i '' 's/@strapi\\/strapi/@strapi\\/types/g' src/types/strapi/*.d.ts",
-    "sync:strapi:types:install": "pnpm -C ../cms run generate:types && pnpm run sync:strapi:types"
+    "sync:strapi:types:install": "pnpm -C ../cms run generate:types && pnpm run sync:strapi:types",
+    "build:fast": "TS_SKIP_COMPILER=true NEXT_IGNORE_ESLINT=true next build"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -53,5 +54,23 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.0.16"
+  },
+  "pnpm": {
+    "overrides": {
+      "@casl/ability": ">=6.7.5",
+      "handlebars": ">=4.7.9",
+      "@modelcontextprotocol/sdk": ">=1.26.0",
+      "preact": ">=10.28.2",
+      "hono": ">=4.12.4",
+      "next": ">=16.1.5",
+      "@isaacs/brace-expansion": ">=5.0.1",
+      "minimatch": ">=10.2.3",
+      "rollup": ">=4.59.0",
+      "koa": ">=2.16.4",
+      "@hono/node-server": ">=1.19.10",
+      "flatted": ">=3.4.2",
+      "picomatch": ">=4.0.4",
+      "path-to-regexp": ">=8.4.0"
+    }
   }
 }

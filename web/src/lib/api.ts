@@ -130,12 +130,19 @@ export const api = {
       headers,
       { next: { revalidate: false, tags: ['about'] } }
     ),
-  getNavigation: (headers?: Record<string, string>) =>
+  getHeader: (headers?: Record<string, string>) =>
     apiClient.get<StrapiNavigationResponse>(
       '/api/navigation/render/header',
       { type: 'RFR' },
       headers,
-      { next: { revalidate: false, tags: ['header'] } }
+      { next: { revalidate: false, tags: ['navigation-item'] } }
+    ),
+  getFooter: (headers?: Record<string, string>) =>
+    apiClient.get<StrapiNavigationResponse>(
+      '/api/navigation/render/footer',
+      { type: 'RFR' },
+      headers,
+      { next: { revalidate: false, tags: ['navigation-item'] } }
     ),
   register: (data: RegisterInput) =>
     apiClient.post<StrapiAuthResponse>('/api/auth/local/register', data),
