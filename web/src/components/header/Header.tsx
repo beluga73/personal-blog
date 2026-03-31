@@ -21,7 +21,7 @@ export const Header = async () => {
   // Only fetch navigation statically
   let navItems: ReturnType<typeof parseNavigation> = [];
   try {
-    const navData = await api.getNavigation();
+    const navData = await api.getHeader();
     navItems = parseNavigation(navData);
   } catch {}
 
